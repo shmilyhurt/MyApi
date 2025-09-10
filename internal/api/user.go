@@ -83,15 +83,15 @@ func Login(c *gin.Context) {
 
 func CreateUser(c *gin.Context) {
 	var req struct {
-		Name  string `json:"name"`
-		Email string `json:"email"`
+		Name string `json:"name"`
+		Pwd  string `json:"pwd"`
 	}
 	if err := c.ShouldBindJSON(&req); err != nil {
 		response.ErrorWithCode(c, http.StatusBadRequest, "参数错误", nil)
 		return
 	}
 
-	if err := service.CreateUser(req.Name, req.Email); err != nil {
+	if err := service.CreateUser(req.Name, req.Pwd); err != nil {
 		response.ErrorWithCode(c, http.StatusInternalServerError, "创建用户失败", nil)
 		return
 	}

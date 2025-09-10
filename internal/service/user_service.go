@@ -5,8 +5,8 @@ import (
 	"MyApi/internal/repository"
 )
 
-func CreateUser(name, email string) error {
-	user := &model.User{Name: name, Email: email}
+func CreateUser(name, pwd string) error {
+	user := &model.User{Username: name, Password: pwd}
 	return repository.CreateUser(user)
 }
 
